@@ -1,6 +1,6 @@
 version: '2'
 services:
-  mariadb:
+  suitecrm_mariadb:
     container_name: suitecrm_mariadb
     image: docker.io/bitnami/mariadb:10.6
     environment:
@@ -18,7 +18,7 @@ services:
       - '80:8080'
       - '443:8443'
     environment:
-      - SUITECRM_DATABASE_HOST=mariadb
+      - SUITECRM_DATABASE_HOST=suitecrm_mariadb
       - SUITECRM_DATABASE_PORT_NUMBER=3306
       - SUITECRM_DATABASE_USER=bn_suitecrm
       - SUITECRM_DATABASE_NAME=bitnami_suitecrm
@@ -31,4 +31,4 @@ services:
     volumes:
       - ./suitecrm_data:/bitnami/suitecrm
     depends_on:
-      - mariadb
+      - suitecrm_mariadb
